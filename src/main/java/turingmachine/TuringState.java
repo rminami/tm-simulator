@@ -1,6 +1,7 @@
 package turingmachine;
 
 import exceptions.InvalidTapeInputException;
+import exceptions.TransitionConflictException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,8 @@ import java.util.Map;
 public class TuringState {
     private String name;
     private boolean isAccepting;
+
+    // Maps input symbols read from the tape to transitions
     private Map<String, TuringTransition> next;
 
     public TuringState(String name, boolean isAccepting) {
@@ -19,7 +22,12 @@ public class TuringState {
         next = new HashMap<>();
     }
 
-    public void addTransition(String inputSymbol, String outputStateName, String outputSymbol, char move) {
+    // Adds a transition for this state
+    public void addTransition(String inputSymbol, String outputStateName, String outputSymbol,
+                              char move)throws TransitionConflictException {
+        if (next.containsKey(inputSymbol)) {
+            throw new TransitionConflictException("Duplicate transition for state " + name + " with input " + inputSymbol);
+        }
         next.put(inputSymbol, new TuringTransition(outputStateName, outputSymbol, move));
     }
 
