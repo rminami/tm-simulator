@@ -6,12 +6,12 @@ package turingmachine;
 public class TuringTransition {
 
     private String outputState;
-    private String outputSymbol;
+    private String tapeOutput;
     private char move;
 
-    public TuringTransition(String outputState, String outputSymbol, char move) {
+    public TuringTransition(String outputState, String tapeOutput, char move) {
         this.outputState = outputState;
-        this.outputSymbol = outputSymbol;
+        this.tapeOutput = tapeOutput;
         this.move = move;
     }
 
@@ -19,8 +19,8 @@ public class TuringTransition {
         return outputState;
     }
 
-    public String getOutputSymbol() {
-        return outputSymbol;
+    public String getTapeOutput() {
+        return tapeOutput;
     }
 
     public char getMove() {

@@ -7,7 +7,7 @@ import java.io.File;
  */
 public class Main {
     public static void main(String[] args) {
-        File file = new File("./input.txt");
+        File file = new File("./example.txt");
         TuringMachine tm = new TuringMachine(file);
 
         String[] inputs = {"ab", "aabb", "bbaa", "abb"};
@@ -15,6 +15,8 @@ public class Main {
         for (String input : inputs) {
             if (tm.processInput(input))
                 System.out.println(input + " was accepted.");
+            else
+                System.out.println(input + " was not accepted");
         }
     }
 }

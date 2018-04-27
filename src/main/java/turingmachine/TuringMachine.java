@@ -1,5 +1,7 @@
 package turingmachine;
 
+import exceptions.InvalidTapeInputException;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -19,6 +21,7 @@ public class TuringMachine {
     private Set<String> alphabet;
     private TuringTape tape;
 
+    private TuringState initialState;
     private TuringState currentState;
 
     public TuringMachine(File inputFile) {
@@ -37,17 +40,18 @@ public class TuringMachine {
             parts = line.trim().split(" ");
 
             // The first state given in the input file is the initial state
-            TuringState initialState = new TuringState(parts[0], parts.length > 1 && parts[1].equals("+"));
+            TuringState state = new TuringState(parts[0], parts.length > 1 && parts[1].equals("+"));
 
             // The field 'states' maps the name of the state to the corresponding TuringState object
-            states.put(parts[0], initialState);
+            states.put(parts[0], state);
+            initialState = state;
             currentState = initialState;
 
             // Stores all of the other states in the same way
             for (int i = 1; i < noOfStates; i++) {
                 line = reader.readLine();
                 parts = line.trim().split(" ");
-                TuringState state = new TuringState(parts[0], parts.length > 1 && parts[1].equals("+"));
+                state = new TuringState(parts[0], parts.length > 1 && parts[1].equals("+"));
                 states.put(parts[0], state);
             }
 
@@ -75,26 +79,34 @@ public class TuringMachine {
     public boolean processInput(String inputStr) {
 
         tape = new TuringTape(inputStr);
+        currentState = initialState;
 
+        try {
 
-        while (!currentState.isAccepting()) {
-            String inputSymbol = tape.read();
+            while (!currentState.isAccepting()) {
+                String inputSymbol = tape.read();
+                TuringTransition transition = states.get(currentState.getName()).nextTransition(inputSymbol);
 
-            TuringTransition transition = states.get(currentState.getName()).nextTransition(inputSymbol);
+//                System.out.println("Current state is " + currentState.getName());
+//                System.out.println("Writing " + transition.getTapeOutput() + " and moving " + transition.getMove());
+                tape.write(transition.getTapeOutput());
 
-            tape.write(transition.getOutputSymbol());
+                if (transition.getMove() == 'L') {
+                    tape.moveLeft();
+                }
+                if (transition.getMove() == 'R') {
+                    tape.moveRight();
+                }
+                if (transition.getMove() == 'M') {
+                    break;
+                }
+                currentState = states.get(transition.getOutputState());
 
-            if (transition.getMove() == 'L') {
-                tape.moveLeft();
             }
-            if (transition.getMove() == 'R') {
-                tape.moveRight();
-            }
-
-            currentState = states.get(transition.getOutputState());
-
+            return true;
+        } catch (InvalidTapeInputException e) {
+            return false;
         }
-        return true;
     }
 
     public TuringState getCurrentState() {
