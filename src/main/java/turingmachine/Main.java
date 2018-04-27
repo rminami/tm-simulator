@@ -10,5 +10,11 @@ public class Main {
         File file = new File("./input.txt");
         TuringMachine tm = new TuringMachine(file);
 
+        String[] inputs = {"ab", "aabb", "bbaa", "abb"};
+
+        for (String input : inputs) {
+            if (tm.processInput(input))
+                System.out.println(input + " was accepted.");
+        }
     }
 }
