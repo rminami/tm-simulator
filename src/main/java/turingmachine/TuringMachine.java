@@ -28,14 +28,13 @@ public class TuringMachine {
      * Generates an instance of a Turing machine from an input file formatted as
      * specified in the practical specifications.
      *
-     * @param inputFile - Input file.
+     * @param inputFile - Input file containing Turing machine description.
      */
     public TuringMachine(File inputFile) {
         try (BufferedReader reader =
                      new BufferedReader(new FileReader(inputFile))) {
 
             states = new HashMap<>();
-            alphabet = new HashSet<>();
 
             String line = reader.readLine();
             String[] parts = line.trim().split(" ");
@@ -65,6 +64,8 @@ public class TuringMachine {
             line = reader.readLine();
             parts = line.trim().split(" ");
 
+            alphabet = new HashSet<>();
+            alphabet.add("_");
             int alphabetSize = Integer.parseInt(parts[1]);
 
             for (int i = 0; i < alphabetSize; i++) {
@@ -74,10 +75,18 @@ public class TuringMachine {
             while ((line = reader.readLine()) != null) {
                 parts = line.trim().split(" ");
 
-                // Support for comments starting with '#'
+                // Allows comment lines starting with '#'
                 if (parts[0].equals("#")) {
                     continue;
                 }
+
+                if (!alphabet.contains(parts[1])) {
+                    throw new IllegalArgumentException(parts[1] + " is not in the alphabet.");
+                }
+                if (!alphabet.contains(parts[3])) {
+                    throw new IllegalArgumentException(parts[3] + " is not in the alphabet.");
+                }
+
                 states.get(parts[0]).addTransition(parts[1], parts[2], parts[3], parts[4].charAt(0));
             }
 
@@ -111,12 +120,8 @@ public class TuringMachine {
 
                 if (transition.getMove() == 'L') {
                     tape.moveLeft();
-                }
-                if (transition.getMove() == 'R') {
+                } else if (transition.getMove() == 'R') {
                     tape.moveRight();
-                }
-                if (transition.getMove() == 'S') {
-                    break;
                 }
                 currentState = states.get(transition.getOutputState());
 //                System.out.println(tape.toString());
