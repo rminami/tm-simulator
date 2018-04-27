@@ -31,8 +31,8 @@ s1 0 f1 0 R
 s1 1 f1 1 R
 s1 2 f1 2 R
 s2 0 f2 0 R
-s1 1 f1 1 R
-s1 2 f1 2 R
+s2 1 f2 1 R
+s2 2 f2 2 R
 # Then, it moves right until it reaches a blank entry on the tape
 f0 0 f0 0 R
 f0 1 f0 1 R
