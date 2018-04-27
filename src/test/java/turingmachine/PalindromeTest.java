@@ -30,10 +30,19 @@ public class PalindromeTest {
         assertTrue(tm.accepts("2011102"));
     }
 
-
     @Test
     public void testValidInput3() {
         assertTrue(tm.accepts("111"));
+    }
+
+    @Test
+    public void testValidInput4() {
+        assertTrue(tm.accepts("1"));
+    }
+
+    @Test
+    public void testValidInput5() {
+        assertTrue(tm.accepts("12000021"));
     }
 
     @Test
