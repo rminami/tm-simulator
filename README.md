@@ -1,2 +1,3 @@
-# turing-machine-simulator
-A Java simulator for Turing machines.
+# Turing machine simulator
+
+A simulator for Turing machines.
