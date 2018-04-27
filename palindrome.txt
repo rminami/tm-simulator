@@ -1,0 +1,44 @@
+states 11
+s
+f0
+f1
+f2
+c0
+c1
+c2
+ba
+bb
+b
+a +
+alphabet 3 0 1 2
+s 0 f0 _ R
+s 1 f1 _ R
+s 2 f2 _ R
+f0 0 f0 0 R
+f0 1 f0 1 R
+f0 2 f0 2 R
+f1 0 f1 0 R
+f1 1 f1 1 R
+f1 2 f1 2 R
+f2 0 f2 0 R
+f2 1 f2 1 R
+f2 2 f2 2 R
+f0 _ c0 _ L
+f1 _ c1 _ L
+f2 _ c2 _ L
+c0 0 ba _ L
+c1 1 ba _ L
+c2 2 ba _ L
+ba 0 bb 0 L
+ba 1 bb 1 L
+ba 2 bb 2 L
+bb _ a _ S
+bb 0 b 0 L
+bb 1 b 1 L
+bb 2 b 2 L
+b 0 b 0 L
+b 1 b 1 L
+b 2 b 2 L
+ba _ s _ R
+b _ s _ R
+s _ a _ S
