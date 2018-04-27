@@ -73,6 +73,11 @@ public class TuringMachine {
 
             while ((line = reader.readLine()) != null) {
                 parts = line.trim().split(" ");
+
+                // Support for comments starting with '#'
+                if (parts[0].equals("#")) {
+                    continue;
+                }
                 states.get(parts[0]).addTransition(parts[1], parts[2], parts[3], parts[4].charAt(0));
             }
 
@@ -100,8 +105,8 @@ public class TuringMachine {
                 String inputSymbol = tape.read();
                 TuringTransition transition = states.get(currentState.getName()).next(inputSymbol);
 
-                System.out.println("Current state is " + currentState.getName());
-                System.out.println("Writing " + transition.getTapeOutput() + " and moving " + transition.getMove());
+//                System.out.println("Current state is " + currentState.getName());
+//                System.out.println("Writing " + transition.getTapeOutput() + " and moving " + transition.getMove());
                 tape.write(transition.getTapeOutput());
 
                 if (transition.getMove() == 'L') {
@@ -114,7 +119,7 @@ public class TuringMachine {
                     break;
                 }
                 currentState = states.get(transition.getOutputState());
-                System.out.println(tape.toString());
+//                System.out.println(tape.toString());
 
             }
             return true;
