@@ -1,4 +1,6 @@
-package turingmachine;
+package main;
+
+import turingmachine.TuringMachine;
 
 import java.io.File;
 
