@@ -3,7 +3,6 @@ package turingmachine;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,17 +22,17 @@ public class ExampleTuringMachineTest {
 
     @Test
     public void testValidInput() {
-        assertTrue(tm.processInput("aabb"));
+        assertTrue(tm.accepts("aabb"));
     }
 
     @Test
     public void testInvalidInput() {
-        assertFalse(tm.processInput("bba"));
+        assertFalse(tm.accepts("bba"));
     }
 
     @Test
     public void testNotInAlphabet() {
-        assertFalse(tm.processInput("c"));
+        assertFalse(tm.accepts("c"));
     }
 
 }

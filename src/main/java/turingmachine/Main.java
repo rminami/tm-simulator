@@ -7,13 +7,13 @@ import java.io.File;
  */
 public class Main {
     public static void main(String[] args) {
-        File file = new File("./example.txt");
+        File file = new File("./palindrome.txt");
         TuringMachine tm = new TuringMachine(file);
 
-        String[] inputs = {"ab", "aabb", "bbaa", "abb"};
+        String[] inputs = {"010", "2112", "20102", "2122"};
 
         for (String input : inputs) {
-            if (tm.processInput(input))
+            if (tm.accepts(input))
                 System.out.println(input + " was accepted.");
             else
                 System.out.println(input + " was not accepted");

@@ -11,11 +11,6 @@ public class TuringTape {
 
     private final String BLANK = "_";
 
-    public TuringTape() {
-        tape = new LinkedList<>();
-        currentPosition = 0;
-    }
-
     public TuringTape(String str) {
         tape = new LinkedList<>();
         currentPosition = 0;

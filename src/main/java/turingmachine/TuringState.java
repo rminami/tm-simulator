@@ -23,7 +23,7 @@ public class TuringState {
         next.put(inputSymbol, new TuringTransition(outputStateName, outputSymbol, move));
     }
 
-    public TuringTransition nextTransition(String tapeInput) throws InvalidTapeInputException {
+    public TuringTransition next(String tapeInput) throws InvalidTapeInputException {
         TuringTransition nextTransition = next.get(tapeInput);
         if (nextTransition == null) {
             throw new InvalidTapeInputException("State " + name + " cannot take input " + tapeInput);

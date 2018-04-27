@@ -24,6 +24,12 @@ public class TuringMachine {
     private TuringState initialState;
     private TuringState currentState;
 
+    /**
+     * Generates an instance of a Turing machine from an input file formatted as
+     * specified in the practical specifications.
+     *
+     * @param inputFile - Input file.
+     */
     public TuringMachine(File inputFile) {
         try (BufferedReader reader =
                      new BufferedReader(new FileReader(inputFile))) {
@@ -76,19 +82,26 @@ public class TuringMachine {
     }
 
 
-    public boolean processInput(String inputStr) {
+    /**
+     * Given an input string, this method determines whether or not it is
+     * accepted by the Turing machine.
+     *
+     * @param input - Input to read.
+     * @return Whether or not it is accepted.
+     */
+    public boolean accepts(String input) {
 
-        tape = new TuringTape(inputStr);
+        tape = new TuringTape(input);
         currentState = initialState;
 
         try {
 
             while (!currentState.isAccepting()) {
                 String inputSymbol = tape.read();
-                TuringTransition transition = states.get(currentState.getName()).nextTransition(inputSymbol);
+                TuringTransition transition = states.get(currentState.getName()).next(inputSymbol);
 
-//                System.out.println("Current state is " + currentState.getName());
-//                System.out.println("Writing " + transition.getTapeOutput() + " and moving " + transition.getMove());
+                System.out.println("Current state is " + currentState.getName());
+                System.out.println("Writing " + transition.getTapeOutput() + " and moving " + transition.getMove());
                 tape.write(transition.getTapeOutput());
 
                 if (transition.getMove() == 'L') {
@@ -97,19 +110,16 @@ public class TuringMachine {
                 if (transition.getMove() == 'R') {
                     tape.moveRight();
                 }
-                if (transition.getMove() == 'M') {
+                if (transition.getMove() == 'S') {
                     break;
                 }
                 currentState = states.get(transition.getOutputState());
+                System.out.println(tape.toString());
 
             }
             return true;
         } catch (InvalidTapeInputException e) {
             return false;
         }
-    }
-
-    public TuringState getCurrentState() {
-        return currentState;
     }
 }
