@@ -12,12 +12,12 @@ import java.io.File;
 /**
  * @author 150023118
  */
-public class TuringMachineTest {
+public class ExampleTuringMachineTest {
     TuringMachine tm;
 
     @Before
     public void setUp() {
-        File file = new File("./input.txt");
+        File file = new File("./example.txt");
         tm = new TuringMachine(file);
     }
 
@@ -28,7 +28,12 @@ public class TuringMachineTest {
 
     @Test
     public void testInvalidInput() {
-        assertFalse(tm.processInput("abbb"));
+        assertFalse(tm.processInput("bba"));
+    }
+
+    @Test
+    public void testNotInAlphabet() {
+        assertFalse(tm.processInput("c"));
     }
 
 }
