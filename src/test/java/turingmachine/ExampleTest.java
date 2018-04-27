@@ -11,7 +11,7 @@ import java.io.File;
 /**
  * @author 150023118
  */
-public class ExampleTuringMachineTest {
+public class ExampleTest {
     TuringMachine tm;
 
     @Before
