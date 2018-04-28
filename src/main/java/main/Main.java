@@ -9,10 +9,10 @@ import java.io.File;
  */
 public class Main {
     public static void main(String[] args) {
-        File file = new File("./palindrome.txt");
+        File file = new File("./switch.txt");
         TuringMachine tm = new TuringMachine(file);
 
-        String[] inputs = {"010", "2112", "20102", "2122"};
+        String[] inputs = {"01", "0101", "1010", "111"};
 
         for (String input : inputs) {
             if (tm.accepts(input))
