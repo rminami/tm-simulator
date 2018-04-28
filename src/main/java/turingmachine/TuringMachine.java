@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -86,13 +87,30 @@ public class TuringMachine {
                 if (!alphabet.contains(parts[3])) {
                     throw new IllegalArgumentException(parts[3] + " is not in the alphabet.");
                 }
-
                 states.get(parts[0]).addTransition(parts[1], parts[2], parts[3], parts[4].charAt(0));
             }
 
         } catch (IOException e) {
             System.out.printf("Could not read '%s'\n", inputFile);
         }
+    }
+
+    private void step() throws InvalidTapeInputException {
+        String inputSymbol = tape.read();
+        TuringTransition transition = states.get(currentState.getName()).getNextTransition(inputSymbol);
+
+//        System.out.println();
+//        System.out.println("Current state is " + currentState.getName());
+//        System.out.println("Writing " + transition.getTapeOutput() + " and moving " + transition.getMove());
+        tape.write(transition.getTapeOutput());
+
+        if (transition.getMove() == 'L') {
+            tape.moveLeft();
+        } else if (transition.getMove() == 'R') {
+            tape.moveRight();
+        }
+        currentState = states.get(transition.getOutputState());
+//        System.out.println(tape.toString());
     }
 
 
@@ -111,25 +129,27 @@ public class TuringMachine {
         try {
 
             while (!currentState.isAccepting()) {
-                String inputSymbol = tape.read();
-                TuringTransition transition = states.get(currentState.getName()).next(inputSymbol);
-
-//                System.out.println("Current state is " + currentState.getName());
-//                System.out.println("Writing " + transition.getTapeOutput() + " and moving " + transition.getMove());
-                tape.write(transition.getTapeOutput());
-
-                if (transition.getMove() == 'L') {
-                    tape.moveLeft();
-                } else if (transition.getMove() == 'R') {
-                    tape.moveRight();
-                }
-                currentState = states.get(transition.getOutputState());
-//                System.out.println(tape.toString());
+                step();
 
             }
             return true;
         } catch (InvalidTapeInputException e) {
             return false;
+        }
+    }
+
+    public int getStepCount(String input) {
+        tape = new TuringTape(input);
+        currentState = initialState;
+        try {
+            int stepCount = 0;
+            while (!currentState.isAccepting()) {
+                step();
+                stepCount++;
+            }
+            return stepCount;
+        } catch (InvalidTapeInputException e) {
+            return -1;
         }
     }
 }
