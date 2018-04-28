@@ -60,11 +60,8 @@ public class PalindromeTest {
         assertFalse(tm.accepts("20110"));
     }
 
-
-
     @Test
     public void testNotInAlphabet() {
         assertFalse(tm.accepts("c"));
     }
-
 }
