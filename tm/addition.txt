@@ -1,4 +1,4 @@
-states 22
+states 21
 s0
 s1
 a0
