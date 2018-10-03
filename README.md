@@ -17,17 +17,7 @@ Then, to quickly run the simulator with your own Turing machine source file, run
 gradle run --args="-s <source_file> -i <input_file>"
 ```
 
-Or, to see how many steps were needed for each input to reach an accepting state, run
-
-```sh
-gradle run --args="-s <source_file> -i <input_file> -c"
-```
-
-Examples of what a Turing machine source file and an input file should look like can be found in `tms/example.tm` and `input/example.in`. To test the CLI out, try running
-
-```sh
-gradle run --args="-s tms/example.tm -i input/example.in -c"
-```
+Add the `-c` flag to see how many steps were needed for each input to reach an accepting state. Examples of a source file and an input file can be found in `tms/example.tm` and `input/example.in`, respectively.
 
 Alternatively, to generate a JAR file, simply run
 
