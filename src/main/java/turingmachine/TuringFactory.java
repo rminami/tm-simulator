@@ -24,9 +24,9 @@ public class TuringFactory {
      * Generates an instance of a Turing machine from an input file formatted as
      * specified in the specification. See the `tms` directory for examples.
      *
-     * @param inputFile - Input file containing the Turing machine description.
-     * @return - Turing machine instance according to the description.
-     * @throws InvalidDescriptionException - If the description is not in the correct format.
+     * @param inputFile Input file containing the Turing machine description.
+     * @return Turing machine instance according to the description.
+     * @throws InvalidDescriptionException If the description is not in the correct format.
      */
     public TuringMachine tmFromFile(File inputFile) throws IOException, InvalidDescriptionException {
         try (
@@ -88,9 +88,9 @@ public class TuringFactory {
      * Generates an instance of a Turing machine from an input file path. Just a small wrapper
      * around the tmFromFile method.
      *
-     * @param filePath - Input file path.
-     * @return - Turing machine instance according to the description.
-     * @throws InvalidDescriptionException - If the description is not in the correct format.
+     * @param filePath Input file path.
+     * @return Turing machine instance according to the description.
+     * @throws InvalidDescriptionException If the description is not in the correct format.
      */
     public TuringMachine tmFromFilePath(String filePath) throws IOException, InvalidDescriptionException {
         File inputFile = new File(filePath);
@@ -100,9 +100,9 @@ public class TuringFactory {
     /**
      * Reads a new line from the file, splits the line into tokens, and returns the tokens.
      *
-     * @param reader - Buffered reader to read from.
-     * @return - Tokens from the next line. Returns null if reader is at the last line.
-     * @throws IOException - If the next line cannot be read.
+     * @param reader Buffered reader to read from.
+     * @return Tokens from the next line. Returns null if reader is at the last line.
+     * @throws IOException If the next line cannot be read.
      */
     private static @Nullable String[] readAndSplit(BufferedReader reader) throws IOException {
         String[] tokens = {""};
@@ -119,9 +119,9 @@ public class TuringFactory {
     /**
      * Maps description inputs to the enum used in the simulator.
      *
-     * @param input - Input string as provided in the description.
-     * @return - A {@link TuringMove} corresponding to the input.
-     * @throws InvalidDescriptionException - If the input is not 'L', 'R', or 'S'.
+     * @param input Input string as provided in the description.
+     * @return A {@link TuringMove} corresponding to the input.
+     * @throws InvalidDescriptionException If the input is not 'L', 'R', or 'S'.
      */
     private static TuringMove moveFromInput(String input) throws InvalidDescriptionException {
         char inputChar = input.charAt(0);
@@ -137,9 +137,8 @@ public class TuringFactory {
      * Maps description inputs to a boolean based on whether or not the most recently read
      * state is an accepting state.
      *
-     * @param tokens - Input tokens from the most recently read line.
-     * @return - Boolean representing whether or not the most recently read state
-     *           is an accepting state.
+     * @param tokens Input tokens from the most recently read line.
+     * @return Boolean representing whether or not the most recently read state is an accepting state.
      */
     private static boolean acceptBoolFromInput(String[] tokens) {
         return tokens.length > 1 && tokens[1].equals("+");

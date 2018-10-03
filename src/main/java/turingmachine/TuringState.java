@@ -25,8 +25,8 @@ public class TuringState {
     /**
      * Constructor.
      *
-     * @param name - The name of the state, as given in the description file.
-     * @param isAccepting - Whether or not this state accepts.
+     * @param name The name of the state, as given in the description file.
+     * @param isAccepting Whether or not this state accepts.
      */
     public TuringState(String name, boolean isAccepting) {
         this.name = name;
@@ -37,10 +37,10 @@ public class TuringState {
     /**
      * Adds a transition that the Turing machine can take when it is in this state.
      *
-     * @param inputSymbol - Symbol to read from the tape.
-     * @param outputState - State that the Turing machine will be in after this transition.
-     * @param outputSymbol - Symbol to write to the tape.
-     * @param move - Direction to move on the tape.
+     * @param inputSymbol Symbol to read from the tape.
+     * @param outputState State that the Turing machine will be in after this transition.
+     * @param outputSymbol Symbol to write to the tape.
+     * @param move Direction to move on the tape.
      * @throws InvalidInputException
      */
     public void addTransition(String inputSymbol, String outputState, String outputSymbol,
@@ -55,9 +55,9 @@ public class TuringState {
      * Gets the nextMap transition that the Turing machine should perform, given
      * the input symbol read from the tape.
      *
-     * @param inputSymbol - Input symbol from the tape.
+     * @param inputSymbol Input symbol from the tape.
      * @return The transition that the Turing machine should perform.
-     * @throws InvalidInputException if there was no transition specified for this state/input combination
+     * @throws InvalidInputException If there was no transition specified for this state/input combination
      */
     public TuringTransition nextTransition(String inputSymbol) throws InvalidInputException {
         TuringTransition nextTransition = nextMap.get(inputSymbol);

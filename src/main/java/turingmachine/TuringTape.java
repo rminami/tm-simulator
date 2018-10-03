@@ -29,7 +29,7 @@ public class TuringTape {
      * Constructor. Initializes the tape with the symbols comprising
      * the string given as the parameter.
      *
-     * @param str - String containing initial values for the tape.
+     * @param str String containing initial values for the tape.
      */
     public TuringTape(String str) {
         tape = new LinkedList<>();
@@ -44,7 +44,7 @@ public class TuringTape {
     /**
      * Reads the value on the tape at the current position.
      *
-     * @return - Symbol printed on current position of the tape.
+     * @return Symbol printed on current position of the tape.
      */
     public String read() {
         return tape.get(currentPos);
@@ -53,7 +53,7 @@ public class TuringTape {
     /**
      * Overwrites the value on the current position on the tape with a new value.
      *
-     * @param str - Value to print on tape.
+     * @param str Value to print on tape.
      */
     public void write(String str) {
         tape.set(currentPos, str);
@@ -62,7 +62,7 @@ public class TuringTape {
     /**
      * Moves the Turing machine on the tape.
      *
-     * @param move - The direction to move the machine in.
+     * @param move The direction to move the machine in.
      */
     public void move(TuringMove move) {
         switch (move) {
@@ -71,7 +71,7 @@ public class TuringTape {
         }
     }
 
-    /** Moves Turing machine left. */
+    /** Moves Turing machine to the left. */
     public void moveLeft() {
         if (currentPos == 0) {
             tape.addFirst("_");
@@ -80,7 +80,7 @@ public class TuringTape {
         }
     }
 
-    /** Moves Turing machine right. */
+    /** Moves Turing machine to the right. */
     public void moveRight() {
         if (currentPos == tape.size() - 1) {
             tape.addLast("_");

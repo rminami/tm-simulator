@@ -22,8 +22,8 @@ public class TuringMachine {
     /**
      * Constructor.
      *
-     * @param states - Maps state names to TuringState objects.
-     * @param initialState - Turing machine starts in this state. Must be included in states.
+     * @param states Maps state names to TuringState objects.
+     * @param initialState Turing machine starts in this state. Must be included in states.
      */
     public TuringMachine(Map<String, TuringState> states, TuringState initialState) {
         this.states = states;
@@ -35,7 +35,7 @@ public class TuringMachine {
     /**
      * Executes another step according to the specifications.
      *
-     * @throws InvalidInputException - If the provided input is invalid.
+     * @throws InvalidInputException If the provided input is invalid.
      */
     private void step() throws InvalidInputException {
         String inputSymbol = tape.read();
@@ -51,7 +51,7 @@ public class TuringMachine {
      * Given an input string, this method determines whether or not it is
      * accepted by the Turing machine.
      *
-     * @param input - Input to read.
+     * @param input Input to read.
      * @return Whether or not it is accepted.
      */
     public boolean accepts(String input) {
@@ -73,8 +73,8 @@ public class TuringMachine {
      * Given an input string, this method determines the number of steps
      * required for the Turing machine to reach an accepting state.
      *
-     * @param input - Input to read.
-     * @return Number of steps until Turing machine accepts.
+     * @param input Input to read.
+     * @return Number of steps until Turing machine accepts,
      *         -1 if the Turing machine does not accept the input.
      */
     public int getStepCount(String input) {
