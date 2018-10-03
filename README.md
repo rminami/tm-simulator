@@ -11,16 +11,32 @@ Compile the code with
 gradle build
 ```
 
-To run all the unit tests, run
+Then, to quickly run the simulator with your own Turing machine source file, run
 
 ```sh
-gradle test
+gradle run --args="-s <source_file> -i <input_file>"
 ```
 
-To run the simulator with your own Turing machine description, run
+Or, to see how many steps were needed for each input to reach an accepting state, run
 
 ```sh
-gradle run --quiet --args="-d <description_file> -i <input_file>"
+gradle run --args="-s <source_file> -i <input_file> -c"
+```
+
+Examples of what a Turing machine source file and an input file should look like can be found in `tms/example.tm` and `input/example.in`. 
+
+Alternatively, to generate a JAR file, simply run
+
+```sh 
+gradle jar
+```
+
+## Testing
+
+To run unit tests for this simulator, run
+
+```bash
+gradle test
 ```
 
 ## License
