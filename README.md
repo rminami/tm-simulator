@@ -7,11 +7,17 @@ A simulator for Turing machines.
 Compile the code with 
 
 ```sh
-mvn compile
+gradle build
 ```
 
 Run all unit tests with
 
 ```sh
-mvn test
+gradle test
+```
+
+To run the simulator with your own Turing machine description, run
+
+```sh
+gradle run --args="-d <description_file> -i <input_file>"
 ```

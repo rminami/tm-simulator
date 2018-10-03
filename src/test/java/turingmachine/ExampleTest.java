@@ -6,14 +6,18 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.IOException;
+
 /**
+ * Unit tests using the example Turing machine description provided.
+ *
  * @author Ryosuke Minami
  */
 public class ExampleTest {
     private TuringMachine tm;
 
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
         TuringFactory factory = new TuringFactory();
         tm = factory.tmFromFilePath("tms/example.txt");
     }
