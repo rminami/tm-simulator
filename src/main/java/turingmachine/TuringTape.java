@@ -7,8 +7,14 @@ import java.util.LinkedList;
 
 @ToString
 public class TuringTape {
-    private LinkedList<String> tape;
+    private final LinkedList<String> tape;
     private int currentPos;
+
+    public TuringTape() {
+        tape = new LinkedList<>();
+        tape.add(" ");
+        currentPos = 0;
+    }
 
     public TuringTape(String str) {
         tape = new LinkedList<>();
@@ -20,6 +26,10 @@ public class TuringTape {
         }
     }
 
+    /**
+     * Reads the value on the tape at the current position.
+     * @return
+     */
     public String read() {
         return tape.get(currentPos);
     }

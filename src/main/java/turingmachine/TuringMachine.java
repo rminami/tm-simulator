@@ -9,7 +9,6 @@ import java.util.Map;
 @EqualsAndHashCode @ToString
 public class TuringMachine {
     private final Map<String, TuringState> states;
-//    private final Set<String> alphabet;
     private TuringTape tape;
 
     private final TuringState initialState;
@@ -17,7 +16,6 @@ public class TuringMachine {
 
     public TuringMachine(Map<String, TuringState> states, TuringState initialState) {
         this.states = states;
-//        this.alphabet = alphabet;
         this.tape = new TuringTape("_");
         this.initialState = initialState;
         this.currentState = initialState;
@@ -25,9 +23,8 @@ public class TuringMachine {
 
     private void step() throws InvalidInputException {
         String inputSymbol = tape.read();
-        TuringTransition transition = states.get(currentState.getName()).getNextTransition(inputSymbol);
+        TuringTransition transition = currentState.nextTransition(inputSymbol);
 
-        System.out.println("Read " + inputSymbol + ", " + transition.toString());
         tape.write(transition.getTapeOutput());
         tape.move(transition.getMove());
 

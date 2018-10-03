@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Represents a state within a Turing machine.
  * The field 'name' stores the name as it appears in the Turing machine description,
- * and the map 'getNextTransition' maps input symbols to transitions.
+ * and the map 'nextTransition' maps input symbols to transitions.
  *
  * @author Ryosuke Minami
  */
@@ -45,7 +45,7 @@ public class TuringState {
      * @return The nextMap transition that the Turing machine should perform.
      * @throws InvalidInputException if there was no transition specified for this state/input combination
      */
-    public TuringTransition getNextTransition(String inputSymbol) throws InvalidInputException {
+    public TuringTransition nextTransition(String inputSymbol) throws InvalidInputException {
         TuringTransition nextTransition = nextMap.get(inputSymbol);
         if (nextTransition == null) {
             throw new InvalidInputException("State " + name + " cannot take input " + inputSymbol);

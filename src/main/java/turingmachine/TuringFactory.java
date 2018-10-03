@@ -27,12 +27,11 @@ public class TuringFactory {
         ) {
             Map<String, TuringState> states = new HashMap<>();
 
-            // First line contains number of states. Example: 'states 21'
+            // First line contains number of states e.g. 'states 21'
             String[] tokens = readAndSplit(reader);
-
             int noOfStates = Integer.parseInt(tokens[1]);
 
-            // Second line contains the initial state. Example: 's0'
+            // Second line contains the initial state e.g. 's0'
             tokens = readAndSplit(reader);
             TuringState state = new TuringState(tokens[0], isAcceptingFromInput(tokens));
 
@@ -72,6 +71,10 @@ public class TuringFactory {
                 }
                 states.get(tokens[0]).addTransition(tokens[1], tokens[2], tokens[3], moveFromInput(tokens[4]));
             }
+            for (String s : states.keySet()) {
+                System.out.println(states.get(s).toString());
+            }
+            System.out.println(alphabet.toString());
             return new TuringMachine(states, initialState);
 
         } catch (IOException e) {
