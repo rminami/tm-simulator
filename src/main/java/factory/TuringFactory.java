@@ -1,4 +1,4 @@
-package factories;
+package factory;
 
 import enums.TuringMove;
 import exceptions.InvalidDescriptionException;

@@ -37,18 +37,19 @@ public class TuringState {
     /**
      * Adds a transition that the Turing machine can take when it is in this state.
      *
-     * @param inputSymbol Symbol to read from the tape.
-     * @param outputState State that the Turing machine will be in after this transition.
-     * @param outputSymbol Symbol to write to the tape.
+     * @param inSymbol Symbol to read from the tape.
+     * @param outState State that the Turing machine will be in after transition.
+     * @param outSymbol Symbol to write to the tape.
      * @param move Direction to move on the tape.
-     * @throws InvalidInputException
+     * @throws InvalidInputException If there is already an entry for the state/input combination.
      */
-    public void addTransition(String inputSymbol, String outputState, String outputSymbol,
-                              TuringMove move) throws InvalidInputException {
-        if (nextMap.containsKey(inputSymbol)) {
-            throw new InvalidInputException("Duplicate transition for state " + name + " with input " + inputSymbol);
+    public void addTransition(String inSymbol, String outState, String outSymbol, TuringMove move)
+            throws InvalidInputException {
+
+        if (nextMap.containsKey(inSymbol)) {
+            throw new InvalidInputException("Duplicate transition for state " + name + " with input " + inSymbol);
         }
-        nextMap.put(inputSymbol, new TuringTransition(outputState, outputSymbol, move));
+        nextMap.put(inSymbol, new TuringTransition(outState, outSymbol, move));
     }
 
     /**
@@ -57,7 +58,7 @@ public class TuringState {
      *
      * @param inputSymbol Input symbol from the tape.
      * @return The transition that the Turing machine should perform.
-     * @throws InvalidInputException If there was no transition specified for this state/input combination
+     * @throws InvalidInputException If there was no transition specified for this state/input combination.
      */
     public TuringTransition nextTransition(String inputSymbol) throws InvalidInputException {
         TuringTransition nextTransition = nextMap.get(inputSymbol);

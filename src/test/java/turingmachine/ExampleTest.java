@@ -3,7 +3,7 @@ package turingmachine;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import factories.TuringFactory;
+import factory.TuringFactory;
 import org.junit.Before;
 import org.junit.Test;
 

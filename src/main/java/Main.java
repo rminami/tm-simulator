@@ -2,7 +2,7 @@ import exceptions.InvalidDescriptionException;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
-import factories.TuringFactory;
+import factory.TuringFactory;
 import turingmachine.TuringMachine;
 
 import java.io.BufferedReader;
@@ -26,27 +26,29 @@ public class Main implements Runnable {
 
     public void run() {
         TuringFactory factory = new TuringFactory();
-        try {
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
             TuringMachine tm = factory.tmFromFile(sourceFile);
-            try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
-                String line;
-                while ((line = reader.readLine()) != null && line.length() > 0) {
-                    System.out.println("Input:\t" + line);
-                    if (!stepFlag) {
-                        System.out.println("Accept?\t" + (tm.accepts(line) ? "Yes" : "No") + "\n");
-                    } else {
-                        int stepCount = tm.getStepCount(line);
-                        System.out.println("Accept?\t" + (stepCount > 0 ? "Yes" : "No"));
-                        System.out.println("Steps:\t" + (stepCount > 0 ? stepCount : "n/a") + "\n");
-                    }
-                }
-            } catch (IOException e) {
-                System.out.println("Could not open input file.");
+            String line;
+            while ((line = reader.readLine()) != null) {
+                printResult(tm, line);
             }
         } catch (IOException e) {
-            System.out.println("Could not read source file.");
+            System.out.println("Could not read file: " + e.getMessage());
         } catch (InvalidDescriptionException e) {
             System.out.println("Source file was in the wrong format.");
+        }
+    }
+
+    public void printResult(TuringMachine tm, String line) {
+        if (line.length() == 0)
+            return;
+        System.out.println("Input:\t" + line);
+        if (!stepFlag) {
+            System.out.println("Accept?\t" + (tm.accepts(line) ? "Yes" : "No") + "\n");
+        } else {
+            int stepCount = tm.getStepCount(line);
+            System.out.println("Accept?\t" + (stepCount > 0 ? "Yes" : "No"));
+            System.out.println("Steps:\t" + (stepCount > 0 ? stepCount : "n/a") + "\n");
         }
     }
 
