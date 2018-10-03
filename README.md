@@ -23,7 +23,11 @@ Or, to see how many steps were needed for each input to reach an accepting state
 gradle run --args="-s <source_file> -i <input_file> -c"
 ```
 
-Examples of what a Turing machine source file and an input file should look like can be found in `tms/example.tm` and `input/example.in`. 
+Examples of what a Turing machine source file and an input file should look like can be found in `tms/example.tm` and `input/example.in`. To test the CLI out, try running
+
+```sh
+gradle run --args="-s tms/example.tm -i input/example.in -c"
+```
 
 Alternatively, to generate a JAR file, simply run
 

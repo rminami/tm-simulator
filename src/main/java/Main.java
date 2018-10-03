@@ -10,6 +10,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * CLI for Turing machine simulator. Command line options are defined here.
+ *
+ * @author Ryosuke Minami
+ */
 @Command(name = "turing machine simulator", mixinStandardHelpOptions = true, version = "1.0")
 public class Main implements Runnable {
     @Option(names = { "-s", "--source" }, description = "Turing machine source file.",
@@ -24,6 +29,7 @@ public class Main implements Runnable {
             "Counts number of steps until completion.")
     boolean stepFlag;
 
+    /** Runs the simulator according to user flags. */
     public void run() {
         TuringFactory factory = new TuringFactory();
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
@@ -39,14 +45,20 @@ public class Main implements Runnable {
         }
     }
 
-    public void printResult(TuringMachine tm, String line) {
-        if (line.length() == 0)
+    /**
+     * Prints out results for a single input value.
+     *
+     * @param tm Turing machine simulator to use.
+     * @param input Input string to test.
+     */
+    public void printResult(TuringMachine tm, String input) {
+        if (input.length() == 0)
             return;
-        System.out.println("Input:\t" + line);
+        System.out.println("Input:\t" + input);
         if (!stepFlag) {
-            System.out.println("Accept?\t" + (tm.accepts(line) ? "Yes" : "No") + "\n");
+            System.out.println("Accept?\t" + (tm.accepts(input) ? "Yes" : "No") + "\n");
         } else {
-            int stepCount = tm.getStepCount(line);
+            int stepCount = tm.getStepCount(input);
             System.out.println("Accept?\t" + (stepCount > 0 ? "Yes" : "No"));
             System.out.println("Steps:\t" + (stepCount > 0 ? stepCount : "n/a") + "\n");
         }
