@@ -55,7 +55,6 @@ public class TuringMachine {
      * @return Whether or not it is accepted.
      */
     public boolean accepts(String input) {
-
         tape = new TuringTape(input);
         currentState = initialState;
 

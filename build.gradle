@@ -6,6 +6,8 @@ plugins {
 group 'com.ryosukeminami'
 version '1.0'
 
+mainClassName = 'Main'
+
 sourceCompatibility = 1.8
 
 repositories {

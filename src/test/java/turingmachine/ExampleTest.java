@@ -3,6 +3,7 @@ package turingmachine;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import factories.TuringFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class ExampleTest {
     @Before
     public void setUp() throws IOException {
         TuringFactory factory = new TuringFactory();
-        tm = factory.tmFromFilePath("tms/example.txt");
+        tm = factory.tmFromFilePath("tms/example.tm");
     }
 
     @Test

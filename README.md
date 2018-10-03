@@ -1,6 +1,7 @@
 # Turing machine simulator
 
-A simulator for Turing machines.
+A Turing machine simulator. \
+Written for CS3052 Computational Complexity at the University of St Andrews.
 
 ## Usage
 
@@ -10,7 +11,7 @@ Compile the code with
 gradle build
 ```
 
-Run all unit tests with
+To run all the unit tests, run
 
 ```sh
 gradle test
@@ -19,5 +20,9 @@ gradle test
 To run the simulator with your own Turing machine description, run
 
 ```sh
-gradle run --args="-d <description_file> -i <input_file>"
+gradle run --quiet --args="-d <description_file> -i <input_file>"
 ```
+
+## License
+
+MIT License (c) 2018 Ryosuke Minami. See the [`LICENSE`](./LICENSE) file for more details.

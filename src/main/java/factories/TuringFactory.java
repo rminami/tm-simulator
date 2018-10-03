@@ -1,8 +1,10 @@
-package turingmachine;
+package factories;
 
 import enums.TuringMove;
 import exceptions.InvalidDescriptionException;
 import org.jetbrains.annotations.Nullable;
+import turingmachine.TuringMachine;
+import turingmachine.TuringState;
 
 import java.io.BufferedReader;
 import java.io.File;
