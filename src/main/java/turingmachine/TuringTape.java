@@ -1,19 +1,18 @@
 package turingmachine;
 
+import enums.TuringMove;
+import lombok.ToString;
+
 import java.util.LinkedList;
 
-/**
- * @author 150023118
- */
+@ToString
 public class TuringTape {
     private LinkedList<String> tape;
-    private int currentPosition;
-
-    private final String BLANK = "_";
+    private int currentPos;
 
     public TuringTape(String str) {
         tape = new LinkedList<>();
-        currentPosition = 0;
+        currentPos = 0;
 
         char[] arr = str.toCharArray();
         for (char ch : arr) {
@@ -22,29 +21,32 @@ public class TuringTape {
     }
 
     public String read() {
-        return tape.get(currentPosition);
+        return tape.get(currentPos);
     }
 
     public void write(String str) {
-        tape.set(currentPosition, str);
+        tape.set(currentPos, str);
+    }
+
+    public void move(TuringMove move) {
+        switch (move) {
+            case LEFT: moveLeft();
+            case RIGHT: moveRight();
+        }
     }
 
     public void moveLeft() {
-        if (currentPosition == 0) {
-            tape.addFirst(BLANK);
+        if (currentPos == 0) {
+            tape.addFirst("_");
         } else {
-            currentPosition--;
+            currentPos--;
         }
     }
 
     public void moveRight() {
-        if (currentPosition == tape.size() - 1) {
-            tape.addLast(BLANK);
+        if (currentPos == tape.size() - 1) {
+            tape.addLast("_");
         }
-        currentPosition++;
-    }
-
-    public String toString() {
-        return tape.toString();
+        currentPos++;
     }
 }

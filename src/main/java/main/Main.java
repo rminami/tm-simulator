@@ -1,24 +1,12 @@
 package main;
 
+import turingmachine.TuringFactory;
 import turingmachine.TuringMachine;
 
-import java.io.File;
-
-/**
- * @author 150023118
- */
 public class Main {
     public static void main(String[] args) {
-        File file = new File("./switch.txt");
-        TuringMachine tm = new TuringMachine(file);
-
-        String[] inputs = {"01", "0101", "1010", "111"};
-
-        for (String input : inputs) {
-            if (tm.accepts(input))
-                System.out.println(input + " was accepted.");
-            else
-                System.out.println(input + " was not accepted");
-        }
+        TuringFactory factory = new TuringFactory();
+        TuringMachine tm = factory.tmFromFilePath("./tm/addition.txt");
+        System.out.println(tm.accepts("01#1#11"));
     }
 }
