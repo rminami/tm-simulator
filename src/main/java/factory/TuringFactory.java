@@ -126,8 +126,7 @@ public class TuringFactory {
      * @throws InvalidDescriptionException If the input is not 'L', 'R', or 'S'.
      */
     private static TuringMove moveFromInput(String input) throws InvalidDescriptionException {
-        char inputChar = input.charAt(0);
-        switch (inputChar) {
+        switch (input.charAt(0)) {
             case 'L': return TuringMove.LEFT;
             case 'R': return TuringMove.RIGHT;
             case 'S': return TuringMove.STAY;

@@ -15,18 +15,32 @@ import java.io.IOException;
  *
  * @author Ryosuke Minami
  */
-@Command(name = "turing machine simulator", mixinStandardHelpOptions = true, version = "1.0")
+@Command(
+        name = "turing machine simulator",
+        mixinStandardHelpOptions = true,
+        version = "1.0"
+)
 public class Main implements Runnable {
-    @Option(names = { "-s", "--source" }, description = "Turing machine source file.",
-            paramLabel = "<source_file>", required = true)
+    @Option(
+            names = { "-s", "--source" },
+            description = "Turing machine source file.",
+            paramLabel = "<source_file>",
+            required = true
+    )
     private File sourceFile;
 
-    @Option(names = { "-i", "--input" }, description = "Input values for Turing machine",
-            paramLabel = "<input_file>", required = true)
+    @Option(
+            names = { "-i", "--input" },
+            description = "Input values for Turing machine",
+            paramLabel = "<input_file>",
+            required = true
+    )
     private File inputFile;
 
-    @Option(names = { "-c", "--count-steps" }, description = "Step count mode. " +
-            "Counts number of steps until completion.")
+    @Option(
+            names = { "-c", "--count-steps" },
+            description = "Step count mode. Shows number of steps until accepting state is reached."
+    )
     boolean stepFlag;
 
     /** Runs the simulator according to user flags. */
