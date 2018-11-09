@@ -1,6 +1,7 @@
 # Turing machine simulator
 
 [![ci-status](https://gitlab.com/rminami/tm-simulator/badges/master/build.svg)](https://gitlab.com/rminami/tm-simulator/pipelines)
+[![Maintainability](https://api.codeclimate.com/v1/badges/6aa69bb53a1b62193cee/maintainability)](https://codeclimate.com/github/rminami/tm-simulator/maintainability)
 
 A Turing machine simulator. \
 Written for CS3052 Computational Complexity at the University of St Andrews.
