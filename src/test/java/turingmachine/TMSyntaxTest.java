@@ -9,7 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 /**
- * Unit tests using the example Turing machine description provided.
+ * Unit tests using invalid Turing machine descriptions.
  *
  * @author Ryosuke Minami
  */
