@@ -7,22 +7,15 @@ sudo: false
 language: java
 
 before_script:
-  - ./gradlew assemble
-
   # Set up Code Climate for test reporting
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 
 script:
-  - ./gradlew test
+  - ./gradlew build
 
 after_script:
-
   # Send coverage result to Code Climate
   - JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage ./build/reports/jacoco/test/jacocoTestReport.xml --input-type jacoco
   - ./cc-test-reporter upload-coverage
-#  - format-coverage target/site/jacoco/jacoco.xml
-#  - cp ./build/reports/jacoco/test/jacocoTestReport.xml src/main/java/jacoco.xml
-#  - cd src/main/java/
-#  - ../../../cc-test-reporter after-build -t jacoco --exit-code $TRAVIS_TEST_RESULT
