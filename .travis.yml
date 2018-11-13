@@ -2,6 +2,7 @@ env:
   global:
     - CODECOV_TOKEN="524d3f8f-9070-4c88-8d3a-95817a1fea76"
 
+sudo: false
 language: java
 
 before_script:
@@ -11,4 +12,4 @@ script:
   - ./gradlew test
 
 after_script:
-  - bash < (curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
