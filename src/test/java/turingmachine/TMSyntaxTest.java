@@ -1,9 +1,7 @@
 package turingmachine;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import exceptions.InvalidDescriptionException;
+import exceptions.InvalidInputException;
 import factory.TuringFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +15,7 @@ import java.io.IOException;
  */
 public class TMSyntaxTest {
     private TuringMachine tm;
-    TuringFactory factory;
+    private TuringFactory factory;
 
     @Before
     public void setUp() {
@@ -47,5 +45,10 @@ public class TMSyntaxTest {
     @Test(expected = InvalidDescriptionException.class)
     public void testIncompleteSpec() throws IOException {
         tm = factory.tmFromFilePath("tms/invalid4.tm");
+    }
+
+    @Test(expected = InvalidInputException.class)
+    public void testDuplicateRule() throws IOException {
+        tm = factory.tmFromFilePath("tms/invalid5.tm");
     }
 }
