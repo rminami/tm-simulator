@@ -20,7 +20,5 @@ script:
 after_script:
 
   # Send coverage result to Code Climate
-  - cp ./build/reports/jacoco/test/jacocoTestReport.xml src/main/java/jacoco.xml
+  - cp ./build/reports/jacoco/test/jacocoTestReport.xml jacoco.xml
   - ./cc-test-reporter after-build -t jacoco --exit-code $TRAVIS_TEST_RESULT
-#  - cd src/main/java/
-#  - ../../../cc-test-reporter after-build -t jacoco --exit-code $TRAVIS_TEST_RESULT
