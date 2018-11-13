@@ -1,6 +1,7 @@
 # Turing machine simulator
 
-[![ci-status](https://gitlab.com/rminami/tm-simulator/badges/master/build.svg)](https://gitlab.com/rminami/tm-simulator/pipelines)
+[![Build Status](https://travis-ci.com/rminami/tm-simulator.svg?branch=master)](https://travis-ci.com/rminami/tm-simulator)
+[![codecov](https://codecov.io/gh/rminami/tm-simulator/branch/master/graph/badge.svg)](https://codecov.io/gh/rminami/tm-simulator)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6aa69bb53a1b62193cee/maintainability)](https://codeclimate.com/github/rminami/tm-simulator/maintainability)
 
 A Turing machine simulator. \
