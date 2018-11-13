@@ -2,9 +2,7 @@ package turingmachine;
 
 import enums.TuringMove;
 import exceptions.InvalidInputException;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +14,6 @@ import java.util.Map;
  *
  * @author Ryosuke Minami
  */
-@EqualsAndHashCode @ToString
 public class TuringState {
     private final @Getter String name;
     private final @Getter boolean isAccepting;
