@@ -20,7 +20,7 @@ script:
 after_script:
 
   # Send coverage result to Code Climate
-  - JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage target/site/jacoco/jacoco.xml --input-type jacoco
+  - JACOCO_SOURCE_PATH=src/main/java ./cc-test-reporter format-coverage ./build/reports/jacoco/test/jacocoTestReport.xml --input-type jacoco
   - ./cc-test-reporter upload-coverage
 #  - format-coverage target/site/jacoco/jacoco.xml
 #  - cp ./build/reports/jacoco/test/jacocoTestReport.xml src/main/java/jacoco.xml
