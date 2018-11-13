@@ -1,7 +1,6 @@
 package turingmachine;
 
 import enums.TuringMove;
-import lombok.ToString;
 
 import java.util.LinkedList;
 
@@ -10,7 +9,6 @@ import java.util.LinkedList;
  *
  * @author Ryosuke Minami
  */
-@ToString
 public class TuringTape {
     private final LinkedList<String> tape;
     private int currentPos;

@@ -1,5 +1,6 @@
 package turingmachine;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -73,4 +74,13 @@ public class ExampleTest {
         assertFalse(tm.accepts("c"));
     }
 
+    @Test
+    public void testStepCount() {
+        assertEquals(tm.getStepCount("aabb"), 5);
+    }
+
+    @Test
+    public void testStepCountNotInAlphabet() {
+        assertEquals(tm.getStepCount("c"), -1);
+    }
 }

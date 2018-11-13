@@ -81,7 +81,7 @@ public class TuringFactory {
             }
             return new TuringMachine(states, initialState);
 
-        } catch (NullPointerException | NumberFormatException e) {
+        } catch (NullPointerException | NumberFormatException | ArrayIndexOutOfBoundsException e) {
             throw new InvalidDescriptionException("Invalid description.");
         }
     }

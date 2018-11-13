@@ -1,8 +1,6 @@
 package turingmachine;
 
 import exceptions.InvalidInputException;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 import java.util.Map;
 
@@ -11,7 +9,6 @@ import java.util.Map;
  *
  * @author Ryosuke Minami
  */
-@EqualsAndHashCode @ToString
 public class TuringMachine {
     private final Map<String, TuringState> states;
     private TuringTape tape;
