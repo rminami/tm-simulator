@@ -1,17 +1,14 @@
 env:
   global:
-  - CC_TEST_REPORTER_ID=5e08a0ed8efa585b6dc215b9429b13ebd53107bee3164ba85dc2d59cd394f54f
+    - CODECOV_TOKEN="524d3f8f-9070-4c88-8d3a-95817a1fea76"
 
 language: java
 
 before_script:
-- ./gradlew assemble
-- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-- chmod +x ./cc-test-reporter
-- ./cc-test-reporter before-build
+  - ./gradlew assemble
 
 script:
-- ./gradlew test
+  - ./gradlew test
 
 after_script:
-- ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - bash < (curl -s https://codecov.io/bash)
