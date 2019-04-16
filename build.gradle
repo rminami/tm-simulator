@@ -16,10 +16,10 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.jetbrains:annotations:16.0.3'
-    implementation 'info.picocli:picocli:3.6.1'
-    annotationProcessor 'org.projectlombok:lombok:1.18.2'
-    compileOnly 'org.projectlombok:lombok:1.18.2'
+    compileOnly 'org.jetbrains:annotations:17.0.0'
+    implementation 'info.picocli:picocli:3.9.6'
+    annotationProcessor 'org.projectlombok:lombok:1.18.6'
+    compileOnly 'org.projectlombok:lombok:1.18.6'
     testImplementation 'junit:junit:4.12'
 }
 
