@@ -79,6 +79,6 @@ public class Main implements Runnable {
     }
 
     public static void main(String[] args) {
-        CommandLine.run(new Main(), System.out, args);
+        new CommandLine(new Main()).execute(args);
     }
 }
