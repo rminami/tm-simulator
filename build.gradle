@@ -17,9 +17,9 @@ repositories {
 
 dependencies {
     compileOnly 'org.jetbrains:annotations:18.0.0'
-    implementation 'info.picocli:picocli:4.1.4'
-    annotationProcessor 'org.projectlombok:lombok:1.18.10'
-    compileOnly 'org.projectlombok:lombok:1.18.10'
+    implementation 'info.picocli:picocli:4.2.0'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
     testImplementation 'junit:junit:4.13'
 }
 
