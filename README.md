@@ -1,6 +1,6 @@
 # Turing machine simulator
 
-[![Build Status](https://travis-ci.com/rminami/tm-simulator.svg?branch=master)](https://travis-ci.com/rminami/tm-simulator)
+![Java CI with Gradle](https://github.com/rminami/tm-simulator/workflows/Java%20CI%20with%20Gradle/badge.svg?branch=master)
 [![Known Vulnerabilities](https://snyk.io/test/github/rminami/tm-simulator/badge.svg?targetFile=build.gradle)](https://snyk.io/test/github/rminami/tm-simulator?targetFile=build.gradle)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6aa69bb53a1b62193cee/maintainability)](https://codeclimate.com/github/rminami/tm-simulator/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6aa69bb53a1b62193cee/test_coverage)](https://codeclimate.com/github/rminami/tm-simulator/test_coverage)
