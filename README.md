@@ -13,29 +13,33 @@ Written for CS3052 Computational Complexity at the University of St Andrews.
 Compile the code with 
 
 ```sh
-gradle build
+./gradlew build
 ```
 
 Then, to quickly run the simulator with your own Turing machine source file, run
 
 ```sh
-gradle run --args="-s <source_file> -i <input_file>"
+./gradlew run --args="-s <source_file> -i <input_file>"
 ```
 
-Add the `-c` flag to see how many steps were needed for each input to reach an accepting state. Examples of a source file and an input file can be found in `tms/example.tm` and `input/example.in`.
+Add the `-c` flag to see how many steps were needed for each input to reach an accepting state. Examples of a source file and an input file can be found in `tms/example.tm` and `input/example.in`, which can be used like this:
+
+```sh
+./gradlew run --args="-s tms/example.tm -i input/example.in"
+```
 
 Alternatively, to generate a JAR file, simply run
 
-```sh 
-gradle jar
+```sh
+./gradlew jar
 ```
 
 ## Testing
 
 To run unit tests for this simulator, run
 
-```bash
-gradle test
+```sh
+./gradlew test
 ```
 
 ## License
