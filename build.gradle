@@ -17,14 +17,14 @@ repositories {
 
 dependencies {
     compileOnly 'org.jetbrains:annotations:18.0.0'
-    implementation 'info.picocli:picocli:4.2.0'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    testImplementation 'junit:junit:4.13'
+    implementation 'info.picocli:picocli:4.5.2'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    testImplementation 'junit:junit:4.13.1'
 }
 
 jacoco {
-    toolVersion = '0.8.5'
+    toolVersion = '0.8.6'
 }
 
 jacocoTestReport {
